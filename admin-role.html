@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/xadmin.css">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+
+  <style>
+    .input-mid{
+      float: left;
+      display: block;
+      margin-right: 10px;
+    }
+    .layui-form-item .layui-input-inline{
+      padding: 0 30px;
+    }
+  </style>
+  
+  <body>
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">数据库</a>
+        <a href="">default</a>
+        <a>
+          <cite>channing</cite></a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so">
+          <textarea name="" id="" cols="30" rows="10" class="layui-input" style="height: 100px;margin-bottom: 10px"></textarea>
+          <button class="layui-btn perform"  lay-submit="" lay-filter="sreach" type="button">
+            执行
+          </button>
+          <button class="layui-btn" lay-submit="" lay-filter="sreach" type="button">
+            另存为
+          </button>
+          <button class="layui-btn" lay-submit="" lay-filter="sreach" type="button">
+            解释
+          </button>
+          或创建一个
+          <button class="layui-btn" lay-submit="" lay-filter="sreach" type="button">
+            新查询
+          </button>
+        </form>
+      </div>
+      <div>
+        <ul id="myTab" class="nav nav-tabs">
+          <li class="active">
+            <a href="#home" data-toggle="tab">查询脚本</a>
+          </li>
+          <li>
+            <a href="#search" data-toggle="tab">查询结果</a>
+          </li>
+          <li>
+            <a href="#log" data-toggle="tab">日志</a>
+          </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade in active" id="home">
+            <table class="layui-table">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="layui-unselect header layui-form-checkbox" lay-skin="primary">
+                      <i class="layui-icon">&#xe605;</i>
+                    </div>
+                  </th>
+                  <th>ID</th>
+                  <th>时间</th>
+                  <th>查询</th>
+                  <th>结果</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'>
+                      <i class="layui-icon">&#xe605;</i>
+                    </div>
+                  </td>
+                  <td>1</td>
+                  <td>2018-4-18</td>
+                  <td>select from</td>
+                  <td class="td-manage">
+                    <a title="查看" onclick="x_admin_show('查看','xxx.html')" href="javascript:;">
+                      查看
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane fade" id="search">
+            查询结果
+          </div>
+          <div class="tab-pane fade" id="log">
+            日志
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="performPrompt" style="width:600px;display: none;margin-top: 20px">
+      <form class="layui-form" action="">
+        <div class="layui-form-item">
+          <label class="layui-form-label">Time</label>
+          <div class="layui-input-inline">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+          </div>
+          <div class="layui-word-aux input-mid" style="padding:0">
+            <input type="text"  class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">Date</label>
+          <div class="layui-input-block">
+            <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">Recurrence</label>
+          <div class="layui-input-inline">
+            <input type="checkbox" name="like[write]" title="repeat every">
+          </div>
+          <div class="layui-input-inline input-mid" style="width:100px">
+            <input type="text" class="layui-input" placeholder="1">
+          </div>
+          <div class="layui-input-inline input-mid">
+            <select name="city" lay-verify="required">
+              <option value=""></option>
+              <option value="0">days</option>
+              <option value="1">上海</option>
+              <option value="2">广州</option>
+              <option value="3">深圳</option>
+              <option value="4">杭州</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">任务结束通知邮箱</label>
+          <div class="layui-input-block">
+            <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+    $('.perform').click(function (params) {
+      layui.use('layer', function () {
+        var layer = layui.layer;
+        layer.open({
+          type: 1,
+          title: 'Schedule Flow Option',
+          area: ['600px'],
+          content: $('.performPrompt'),
+          btn: ['调度','取消'],
+          success:function(){
+          },
+          yes: function (params) {
+            layer.msg('fukc')
+          }
+        });
+      });  
+    })
+  </script>
+
+</html>
