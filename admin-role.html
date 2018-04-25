@@ -126,16 +126,16 @@
         <div class="layui-form-item">
           <label class="layui-form-label">Time</label>
           <div class="layui-input-inline">
-            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
           </div>
           <div class="layui-word-aux input-mid" style="padding:0">
-            <input type="text"  class="layui-input">
+          <input class="layui-input" placeholder="请选择时间" name="start" id="time" lay-key="1">
           </div>
         </div>
         <div class="layui-form-item">
           <label class="layui-form-label">Date</label>
           <div class="layui-input-block">
-            <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            <input class="layui-input" placeholder="请选择日期" name="start" id="date" lay-key="2" style="max-width:440px">
           </div>
         </div>
         <div class="layui-form-item">
@@ -160,7 +160,7 @@
         <div class="layui-form-item">
           <label class="layui-form-label">任务结束通知邮箱</label>
           <div class="layui-input-block">
-            <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            <input type="text" name="title" required lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
           </div>
         </div>
       </form>
@@ -177,6 +177,17 @@
           content: $('.performPrompt'),
           btn: ['调度','取消'],
           success:function(){
+            layui.use('laydate', function () {
+              var laydate = layui.laydate;
+              //时间选择器
+              laydate.render({
+                elem: '#time', 
+                type: 'time'
+              });
+              laydate.render({
+                elem: '#date'
+              });
+            });
           },
           yes: function (params) {
             layer.msg('fukc')
